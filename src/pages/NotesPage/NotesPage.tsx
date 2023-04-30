@@ -5,8 +5,11 @@ import { Search } from "../../components/Search/Search";
 import { NotesList } from "../../components/NotesList/NotesList";
 import { Dialog } from "../../components/Dialog/Dialog";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useNavigate } from "react-router-native";
 
 export const NotesPage = () => {
+  const navigate = useNavigate();
+
   return (
     <View style={styles.container}>
       <NavBar filter={true}></NavBar>
@@ -19,7 +22,7 @@ export const NotesPage = () => {
         size={30}
         style={styles.new}
         color={"#000"}
-        onPress={() => console.log("create")}
+        onPress={() => navigate("/new")}
       />
     </View>
   );

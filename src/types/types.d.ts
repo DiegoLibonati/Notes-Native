@@ -48,6 +48,12 @@ export type NotesPayloadType = {
   };
 };
 
+export type InputWithLabelType = {
+  label: string;
+  placeholder: string;
+  inputHeight?: number | string;
+};
+
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
