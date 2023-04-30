@@ -1,6 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { NotesPayloadType, NotesStateType } from "../../types/types";
+import {
+  NoteFilter,
+  NotesPayloadType,
+  NotesStateType,
+} from "../../types/types";
 
 // Define the initial state using that type
 const initialState: NotesStateType = {
@@ -22,6 +26,15 @@ const initialState: NotesStateType = {
   ],
   notesFiltered: [],
   isFiltering: false,
+  filters: [
+    {
+      id: "filter0",
+      name: "Date",
+      isActive: true,
+    },
+    { id: "filter1", name: "Title", isActive: false },
+    { id: "filter2", name: "Description", isActive: false },
+  ],
 };
 
 export const notesSlice = createSlice({
@@ -33,11 +46,30 @@ export const notesSlice = createSlice({
       state,
       action: PayloadAction<NotesPayloadType["isFiltering"]>
     ) => {
-      const newNotes = state.notes.filter((note) =>
-        note.title.includes(action.payload.valueFilter)
-      );
+      const filterBy = state.filters.find((filter) => filter.isActive)?.name;
+      let newNotes = null;
 
-      if (!newNotes.length) {
+      if (filterBy === "Date") {
+        newNotes = state.notes.filter((note) =>
+          note.date
+            .toLowerCase()
+            .includes(action.payload.valueFilter.toLowerCase())
+        );
+      } else if (filterBy === "Title") {
+        newNotes = state.notes.filter((note) =>
+          note.title
+            .toLowerCase()
+            .includes(action.payload.valueFilter.toLowerCase())
+        );
+      } else {
+        newNotes = state.notes.filter((note) =>
+          note.content
+            .toLowerCase()
+            .includes(action.payload.valueFilter.toLowerCase())
+        );
+      }
+
+      if (!newNotes?.length) {
         state.notesFiltered = [];
         return;
       }
@@ -59,9 +91,26 @@ export const notesSlice = createSlice({
         return;
       }
     },
+    handleChangeFilter: (
+      state,
+      action: PayloadAction<NotesPayloadType["changeActiveFilter"]>
+    ) => {
+      state.filters.reduce((filters: NoteFilter[], filter: NoteFilter) => {
+        if (filter.name === action.payload.name) {
+          filter.isActive = true;
+          filters.push(filter);
+        } else {
+          filter.isActive = false;
+          filters.push(filter);
+        }
+
+        return filters;
+      }, []);
+    },
   },
 });
 
-export const { handleFilter, handleIsFiltering } = notesSlice.actions;
+export const { handleFilter, handleIsFiltering, handleChangeFilter } =
+  notesSlice.actions;
 
 export default notesSlice.reducer;

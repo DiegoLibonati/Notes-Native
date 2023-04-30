@@ -7,17 +7,44 @@ export type NoteType = {
 
 export type NavBarType = {
   goBack?: boolean;
+  filter?: boolean;
+};
+
+export type CheckboxType = {
+  name: string;
+  active: boolean;
+  onPress: (name: string) => void;
 };
 
 export type NotesStateType = {
   notes: NoteType[];
   notesFiltered: NoteType[];
   isFiltering: boolean;
+  filters: {
+    id: string;
+    name: string;
+    isActive: boolean;
+  }[];
+};
+
+export type NoteFilter = {
+  id: string;
+  name: string;
+  isActive: boolean;
+};
+
+export type UiStateType = {
+  modal: {
+    isOpen: boolean;
+  };
 };
 
 export type NotesPayloadType = {
   isFiltering: {
     valueFilter: string;
+  };
+  changeActiveFilter: {
+    name: string;
   };
 };
 

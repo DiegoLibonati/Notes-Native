@@ -1,0 +1,37 @@
+import React from "react";
+import { View, Pressable, Text, StyleSheet } from "react-native";
+import { CheckboxType } from "../../types/types";
+
+export const Checkbox = ({ name, active, onPress }: CheckboxType) => {
+  return (
+    <View style={styles.checkboxContainer}>
+      <Pressable
+        style={[styles.checkbox, { backgroundColor: active ? "#000" : "#fff" }]}
+        onPress={() => onPress(name)}
+      ></Pressable>
+      <Text style={styles.checkboxText}>{name}</Text>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  checkboxContainer: {
+    alignItems: "center",
+    justifyContent: "flex-start",
+    flexDirection: "row",
+    width: "100%",
+  },
+  checkbox: {
+    width: 20,
+    height: 20,
+    backgroundColor: "#fff",
+    borderColor: "#000",
+    borderWidth: 1,
+    borderRadius: 50,
+  },
+
+  checkboxText: {
+    marginLeft: 8,
+    fontSize: 20,
+  },
+});

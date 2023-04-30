@@ -2,9 +2,12 @@ import { StyleSheet, Text, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigate } from "react-router-native";
 import { NavBarType } from "../../types/types";
+import { useDispatch } from "react-redux";
+import { handleOpenModal } from "../../slices/ui/uiSlice";
 
-export const NavBar = ({ goBack = false }: NavBarType) => {
+export const NavBar = ({ goBack = false, filter = false }: NavBarType) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <View style={styles.container}>
@@ -17,6 +20,15 @@ export const NavBar = ({ goBack = false }: NavBarType) => {
           style={styles.arrow}
           color={"#000"}
           onPress={() => navigate("/")}
+        />
+      )}
+      {filter && (
+        <Ionicons
+          name="filter"
+          size={30}
+          style={styles.filter}
+          color={"#000"}
+          onPress={() => dispatch(handleOpenModal())}
         />
       )}
     </View>
@@ -50,5 +62,9 @@ const styles = StyleSheet.create({
   arrow: {
     position: "absolute",
     left: 5,
+  },
+  filter: {
+    position: "absolute",
+    right: 5,
   },
 });
