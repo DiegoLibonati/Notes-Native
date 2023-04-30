@@ -4,6 +4,7 @@ import { NavBar } from "../../components/NavBar/NavBar";
 import { Search } from "../../components/Search/Search";
 import { NotesList } from "../../components/NotesList/NotesList";
 import { Dialog } from "../../components/Dialog/Dialog";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 export const NotesPage = () => {
   return (
@@ -12,6 +13,14 @@ export const NotesPage = () => {
       <Search></Search>
       <NotesList></NotesList>
       <Dialog></Dialog>
+
+      <Ionicons
+        name="pencil"
+        size={30}
+        style={styles.new}
+        color={"#000"}
+        onPress={() => console.log("create")}
+      />
     </View>
   );
 };
@@ -20,5 +29,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Constants.statusBarHeight,
+  },
+  new: {
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
+    bottom: 10,
+    right: 10,
+    borderRadius: 50,
+    elevation: 1,
+    backgroundColor: "#fff",
+    padding: 10,
+    fontSize: 25,
   },
 });

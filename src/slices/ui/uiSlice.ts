@@ -5,7 +5,7 @@ import { NotesPayloadType, UiStateType } from "../../types/types";
 // Define the initial state using that type
 const initialState: UiStateType = {
   modal: {
-    isOpen: true,
+    isOpen: false,
   },
 };
 
