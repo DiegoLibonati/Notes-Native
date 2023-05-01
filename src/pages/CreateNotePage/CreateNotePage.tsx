@@ -1,9 +1,33 @@
+import { useState } from "react";
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import Constants from "expo-constants";
 import { NavBar } from "../../components/NavBar/NavBar";
 import { InputWithLabel } from "../../components/InputWithLabel/InputWithLabel";
+import { useDispatch } from "react-redux";
+import { handleNewNote } from "../../slices/notes/notesSlice";
+import { useNavigate } from "react-router-native";
 
 export const CreateNotePage = () => {
+  const [formData, setFormData] = useState({
+    title: "",
+    content: "",
+  });
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    const note = {
+      id: 23,
+      date: "01 May",
+      title: formData.title,
+      content: formData.content,
+    };
+
+    dispatch(handleNewNote(note));
+    navigate("/");
+  };
+
   return (
     <View style={styles.container}>
       <NavBar goBack={true}></NavBar>
@@ -12,14 +36,22 @@ export const CreateNotePage = () => {
         <InputWithLabel
           label="Insert a Title"
           placeholder="Title..."
+          value={formData.title}
+          onChangeText={(text) => {
+            setFormData({ ...formData, title: text });
+          }}
         ></InputWithLabel>
 
         <InputWithLabel
           label="Insert a Content"
           placeholder="Content..."
+          value={formData.content}
+          onChangeText={(text) => {
+            setFormData({ ...formData, content: text });
+          }}
         ></InputWithLabel>
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
           <Text style={styles.buttonText}>Create</Text>
         </TouchableOpacity>
       </View>

@@ -107,10 +107,18 @@ export const notesSlice = createSlice({
         return filters;
       }, []);
     },
+    handleNewNote: (state, action: PayloadAction<NotesPayloadType["note"]>) => {
+      state.notes.push(action.payload);
+      return;
+    },
   },
 });
 
-export const { handleFilter, handleIsFiltering, handleChangeFilter } =
-  notesSlice.actions;
+export const {
+  handleFilter,
+  handleIsFiltering,
+  handleChangeFilter,
+  handleNewNote,
+} = notesSlice.actions;
 
 export default notesSlice.reducer;

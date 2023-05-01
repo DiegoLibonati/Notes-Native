@@ -1,6 +1,6 @@
 export type NoteType = {
-  id: number;
-  date: string;
+  id: number | string;
+  date: string | Date;
   title: string;
   content: string;
 };
@@ -46,12 +46,15 @@ export type NotesPayloadType = {
   changeActiveFilter: {
     name: string;
   };
+  note: NoteType;
 };
 
 export type InputWithLabelType = {
   label: string;
   placeholder: string;
   inputHeight?: number | string;
+  value: string;
+  onChangeText: (text: string) => void;
 };
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

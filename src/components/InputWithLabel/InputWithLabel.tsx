@@ -6,6 +6,8 @@ export const InputWithLabel = ({
   label,
   placeholder,
   inputHeight,
+  value,
+  onChangeText,
 }: InputWithLabelType) => {
   return (
     <View style={styles.container}>
@@ -13,6 +15,8 @@ export const InputWithLabel = ({
       <TextInput
         placeholder={placeholder}
         style={[styles.input, { height: inputHeight }]}
+        onChangeText={onChangeText}
+        value={value}
       ></TextInput>
     </View>
   );
