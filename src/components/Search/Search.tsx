@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 import { handleFilter, handleIsFiltering } from "../../slices/notes/notesSlice";
 import { useDispatch } from "react-redux";
+import { theme } from "../../theme/theme";
 
 export const Search = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export const Search = () => {
         placeholder="Search note.."
         onChangeText={setValueFilter}
         value={valueFilter}
+        placeholderTextColor={theme.colors.white}
       ></TextInput>
     </View>
   );
@@ -36,7 +38,8 @@ const styles = StyleSheet.create({
     width: "80%",
     padding: 10,
     borderRadius: 50,
-    borderColor: "#666",
+    borderColor: theme.colors.secondary,
     borderWidth: 1,
+    color: theme.colors.white,
   },
 });

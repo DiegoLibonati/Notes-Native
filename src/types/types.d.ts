@@ -54,6 +54,7 @@ export type InputWithLabelType = {
   placeholder: string;
   inputHeight?: number | string;
   value: string;
+  placeholderTextColor?: string;
   onChangeText: (text: string) => void;
 };
 

@@ -6,6 +6,7 @@ import { InputWithLabel } from "../../components/InputWithLabel/InputWithLabel";
 import { useDispatch } from "react-redux";
 import { handleNewNote } from "../../slices/notes/notesSlice";
 import { useNavigate } from "react-router-native";
+import { theme } from "../../theme/theme";
 
 export const CreateNotePage = () => {
   const [formData, setFormData] = useState({
@@ -37,6 +38,7 @@ export const CreateNotePage = () => {
           label="Insert a Title"
           placeholder="Title..."
           value={formData.title}
+          placeholderTextColor={theme.colors.white}
           onChangeText={(text) => {
             setFormData({ ...formData, title: text });
           }}
@@ -46,6 +48,7 @@ export const CreateNotePage = () => {
           label="Insert a Content"
           placeholder="Content..."
           value={formData.content}
+          placeholderTextColor={theme.colors.white}
           onChangeText={(text) => {
             setFormData({ ...formData, content: text });
           }}
@@ -63,6 +66,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Constants.statusBarHeight,
+    backgroundColor: theme.colors.primary,
   },
   form: {
     flex: 1,
@@ -71,12 +75,12 @@ const styles = StyleSheet.create({
   },
   button: {
     alignSelf: "flex-end",
-    backgroundColor: "#000",
+    backgroundColor: theme.colors.secondary,
     padding: 10,
     borderRadius: 10,
     marginTop: 10,
   },
   buttonText: {
-    color: "#fff",
+    color: theme.colors.white,
   },
 });

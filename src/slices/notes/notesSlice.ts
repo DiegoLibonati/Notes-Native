@@ -23,6 +23,41 @@ const initialState: NotesStateType = {
       content:
         "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
     },
+    {
+      id: 2,
+      date: "06 Jul",
+      title: "Esta es una notaaaaaaaaaaaaaaaaaaa 24/7",
+      content:
+        "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
+    },
+    {
+      id: 3,
+      date: "06 Jul",
+      title: "Esta es una notaaaaaaaaaaaaaaaaaaa 24/7",
+      content:
+        "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
+    },
+    {
+      id: 4,
+      date: "06 Jul",
+      title: "Esta es una notaaaaaaaaaaaaaaaaaaa 24/7",
+      content:
+        "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
+    },
+    {
+      id: 5,
+      date: "06 Jul",
+      title: "Esta es una notaaaaaaaaaaaaaaaaaaa 24/7",
+      content:
+        "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
+    },
+    {
+      id: 6,
+      date: "06 Jul",
+      title: "Esta es una notaaaaaaaaaaaaaaaaaaa 24/7",
+      content:
+        "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
+    },
   ],
   notesFiltered: [],
   isFiltering: false,

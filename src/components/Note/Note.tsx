@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, TouchableNativeFeedback, View } from "react-native";
 import { NoteType } from "../../types/types";
 import { useNavigate } from "react-router-native";
+import { theme } from "../../theme/theme";
 
 export const Note = ({ id, date, title, content }: NoteType) => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ export const Note = ({ id, date, title, content }: NoteType) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#2FA",
+    backgroundColor: theme.colors.secondary,
     padding: 5,
     margin: 5,
     borderRadius: 10,
@@ -33,14 +34,17 @@ const styles = StyleSheet.create({
   date: {
     alignSelf: "flex-end",
     fontSize: 10,
+    color: theme.colors.white,
   },
   title: {
     alignSelf: "center",
     fontSize: 21,
     textAlign: "center",
+    color: theme.colors.white,
   },
   content: {
     fontSize: 14,
     marginTop: 8,
+    color: theme.colors.white,
   },
 });

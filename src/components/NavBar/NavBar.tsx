@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-native";
 import { NavBarType } from "../../types/types";
 import { useDispatch } from "react-redux";
 import { handleOpenModal } from "../../slices/ui/uiSlice";
+import { theme } from "../../theme/theme";
 
 export const NavBar = ({ goBack = false, filter = false }: NavBarType) => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ export const NavBar = ({ goBack = false, filter = false }: NavBarType) => {
           name="arrow-back-outline"
           size={30}
           style={styles.arrow}
-          color={"#000"}
+          color={theme.colors.white}
           onPress={() => navigate("/")}
         />
       )}
@@ -27,7 +28,7 @@ export const NavBar = ({ goBack = false, filter = false }: NavBarType) => {
           name="filter"
           size={30}
           style={styles.filter}
-          color={"#000"}
+          color={theme.colors.white}
           onPress={() => dispatch(handleOpenModal())}
         />
       )}
@@ -47,6 +48,7 @@ const styles = StyleSheet.create({
   navbarText: {
     fontSize: 21,
     fontWeight: "bold",
+    color: theme.colors.white,
   },
   shadow: {
     position: "absolute",
@@ -55,7 +57,7 @@ const styles = StyleSheet.create({
     right: 0,
     height: 1.5,
     borderRadius: 10,
-    backgroundColor: "#000000",
+    backgroundColor: theme.colors.secondary,
     opacity: 0.2,
     zIndex: -1,
   },

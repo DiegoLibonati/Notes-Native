@@ -1,12 +1,14 @@
 import React from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
 import { InputWithLabelType } from "../../types/types";
+import { theme } from "../../theme/theme";
 
 export const InputWithLabel = ({
   label,
   placeholder,
   inputHeight,
   value,
+  placeholderTextColor,
   onChangeText,
 }: InputWithLabelType) => {
   return (
@@ -17,6 +19,7 @@ export const InputWithLabel = ({
         style={[styles.input, { height: inputHeight }]}
         onChangeText={onChangeText}
         value={value}
+        placeholderTextColor={placeholderTextColor}
       ></TextInput>
     </View>
   );
@@ -31,11 +34,13 @@ const styles = StyleSheet.create({
   label: {
     paddingBottom: 10,
     fontSize: 20,
+    color: theme.colors.white,
   },
   input: {
-    borderColor: "#000",
+    borderColor: theme.colors.secondary,
     padding: 10,
     borderWidth: 1,
     borderRadius: 10,
+    color: theme.colors.white,
   },
 });

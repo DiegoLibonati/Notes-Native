@@ -3,6 +3,7 @@ import { FlatList, SafeAreaView, StyleSheet, Text } from "react-native";
 import { Note } from "../Note/Note";
 import { useSelector } from "react-redux";
 import { RootState } from "../../types/types";
+import { theme } from "../../theme/theme";
 
 export const NotesList = () => {
   const { notes, notesFiltered, isFiltering } = useSelector(
@@ -32,5 +33,6 @@ const styles = StyleSheet.create({
   notFoundNotes: {
     textAlign: "center",
     fontSize: 15,
+    color: theme.colors.white,
   },
 });

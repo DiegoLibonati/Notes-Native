@@ -6,6 +6,7 @@ import { NavBar } from "../../components/NavBar/NavBar";
 import { NoteComplete } from "../../components/NoteComplete/NoteComplete";
 import { useSelector } from "react-redux";
 import { RootState } from "../../types/types";
+import { theme } from "../../theme/theme";
 
 export const NotePage = () => {
   const { notes } = useSelector((state: RootState) => state.notes);
@@ -28,5 +29,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Constants.statusBarHeight,
+    backgroundColor: theme.colors.primary,
   },
 });

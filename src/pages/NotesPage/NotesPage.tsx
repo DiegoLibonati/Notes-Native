@@ -6,6 +6,7 @@ import { NotesList } from "../../components/NotesList/NotesList";
 import { Dialog } from "../../components/Dialog/Dialog";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigate } from "react-router-native";
+import { theme } from "../../theme/theme";
 
 export const NotesPage = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export const NotesPage = () => {
         name="pencil"
         size={30}
         style={styles.new}
-        color={"#000"}
+        color={theme.colors.white}
         onPress={() => navigate("/new")}
       />
     </View>
@@ -32,6 +33,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Constants.statusBarHeight,
+    backgroundColor: theme.colors.primary,
   },
   new: {
     alignItems: "center",
@@ -41,7 +43,7 @@ const styles = StyleSheet.create({
     right: 10,
     borderRadius: 50,
     elevation: 1,
-    backgroundColor: "#fff",
+    backgroundColor: theme.colors.secondary,
     padding: 10,
     fontSize: 25,
   },
