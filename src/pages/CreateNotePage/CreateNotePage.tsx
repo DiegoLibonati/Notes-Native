@@ -19,8 +19,11 @@ export const CreateNotePage = () => {
 
   const handleSubmit = () => {
     const note = {
-      id: 23,
-      date: "01 May",
+      id: Number(new Date().getMilliseconds()),
+      date: new Date().toLocaleString("default", {
+        day: "2-digit",
+        month: "long",
+      }),
       title: formData.title,
       content: formData.content,
     };

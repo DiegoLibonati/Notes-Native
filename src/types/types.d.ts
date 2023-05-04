@@ -1,6 +1,6 @@
 export type NoteType = {
   id: number | string;
-  date: string | Date;
+  date: string;
   title: string;
   content: string;
 };

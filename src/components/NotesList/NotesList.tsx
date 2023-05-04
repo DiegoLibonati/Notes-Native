@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FlatList, SafeAreaView, StyleSheet, Text } from "react-native";
 import { Note } from "../Note/Note";
 import { useSelector } from "react-redux";
@@ -9,6 +9,10 @@ export const NotesList = () => {
   const { notes, notesFiltered, isFiltering } = useSelector(
     (state: RootState) => state.notes
   );
+
+  useEffect(() => {
+    console.log(notes);
+  }, [notes]);
 
   return (
     <SafeAreaView style={styles.container}>
