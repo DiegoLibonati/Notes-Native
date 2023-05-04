@@ -8,57 +8,7 @@ import {
 
 // Define the initial state using that type
 const initialState: NotesStateType = {
-  notes: [
-    {
-      id: 0,
-      date: "05 Jul",
-      title: "Esta es una nota 24/7",
-      content:
-        "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
-    },
-    {
-      id: 1,
-      date: "06 Jul",
-      title: "Esta es una notaaaaaaaaaaaaaaaaaaa 24/7",
-      content:
-        "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
-    },
-    {
-      id: 2,
-      date: "06 Jul",
-      title: "Esta es una notaaaaaaaaaaaaaaaaaaa 24/7",
-      content:
-        "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
-    },
-    {
-      id: 3,
-      date: "06 Jul",
-      title: "Esta es una notaaaaaaaaaaaaaaaaaaa 24/7",
-      content:
-        "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
-    },
-    {
-      id: 4,
-      date: "06 Jul",
-      title: "Esta es una notaaaaaaaaaaaaaaaaaaa 24/7",
-      content:
-        "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
-    },
-    {
-      id: 5,
-      date: "06 Jul",
-      title: "Esta es una notaaaaaaaaaaaaaaaaaaa 24/7",
-      content:
-        "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
-    },
-    {
-      id: 6,
-      date: "06 Jul",
-      title: "Esta es una notaaaaaaaaaaaaaaaaaaa 24/7",
-      content:
-        "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
-    },
-  ],
+  notes: [],
   notesFiltered: [],
   isFiltering: false,
   filters: [

@@ -12,6 +12,10 @@ export const NotesList = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      {!notes.length && !isFiltering && (
+        <Text style={styles.notFoundNotes}>Todavia no tenes notas creadas</Text>
+      )}
+
       {isFiltering && !notesFiltered.length ? (
         <Text style={styles.notFoundNotes}>No se encontraron notas</Text>
       ) : (
