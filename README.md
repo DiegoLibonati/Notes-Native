@@ -43,5 +43,3 @@ https://diegolibonati.github.io/DiegoLibonatiWeb/#/projects?q=Notes%20Native%20A
 ## Video
 
 https://user-images.githubusercontent.com/99032604/236560072-28dfdf6f-6cdd-4f96-ba2f-e371d9c807ee.mp4
-
-## Documentation
