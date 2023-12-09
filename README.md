@@ -26,19 +26,7 @@ This native application is a notepad. It allows you to add notes, view these not
 
 ## Portfolio Link
 
-https://diegolibonati.github.io/DiegoLibonatiWeb/#/projects?q=Notes%20Native%20App
-
-## Galery
-
-![REACT-NATIVE](https://raw.githubusercontent.com/DiegoLibonati/DiegoLibonatiWeb/main/data/projects/React/Imagenes/notes-react-native-0.jpg)
-
-![REACT-NATIVE](https://raw.githubusercontent.com/DiegoLibonati/DiegoLibonatiWeb/main/data/projects/React/Imagenes/notes-react-native-1.jpg)
-
-![REACT-NATIVE](https://raw.githubusercontent.com/DiegoLibonati/DiegoLibonatiWeb/main/data/projects/React/Imagenes/notes-react-native-2.jpg)
-
-![REACT-NATIVE](https://raw.githubusercontent.com/DiegoLibonati/DiegoLibonatiWeb/main/data/projects/React/Imagenes/notes-react-native-3.jpg)
-
-![REACT-NATIVE](https://raw.githubusercontent.com/DiegoLibonati/DiegoLibonatiWeb/main/data/projects/React/Imagenes/notes-react-native-4.jpg)
+[`https://www.diegolibonati.com.ar/#/project/14`](https://www.diegolibonati.com.ar/#/project/14)
 
 ## Video
 
