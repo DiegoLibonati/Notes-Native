@@ -4,7 +4,7 @@ import { NotesPage } from "../pages/NotesPage/NotesPage";
 import { NotePage } from "../pages/NotePage/NotePage";
 import { CreateNotePage } from "../pages/CreateNotePage/CreateNotePage";
 
-export const NotesRouter = () => {
+export const NotesRouter = (): JSX.Element => {
   return (
     <Routes>
       <Route path="/" element={<NotesPage></NotesPage>}></Route>

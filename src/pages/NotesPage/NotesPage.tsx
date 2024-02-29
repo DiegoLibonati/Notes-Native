@@ -8,7 +8,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigate } from "react-router-native";
 import { theme } from "../../theme/theme";
 
-export const NotesPage = () => {
+export const NotesPage = (): JSX.Element => {
   const navigate = useNavigate();
 
   return (

@@ -1,10 +1,10 @@
 import React from "react";
 import { StyleSheet, Text, TouchableNativeFeedback, View } from "react-native";
-import { NoteType } from "../../types/types";
+import { NoteProps } from "../../types/types";
 import { useNavigate } from "react-router-native";
 import { theme } from "../../theme/theme";
 
-export const Note = ({ id, date, title, content }: NoteType) => {
+export const Note = ({ id, date, title, content }: NoteProps): JSX.Element => {
   const navigate = useNavigate();
 
   return (

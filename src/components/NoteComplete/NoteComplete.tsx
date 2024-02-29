@@ -1,9 +1,13 @@
 import React from "react";
 import { StyleSheet, ScrollView, Text } from "react-native";
-import { NoteType } from "../../types/types";
+import { NoteCompleteProps } from "../../types/types";
 import { theme } from "../../theme/theme";
 
-export const NoteComplete = ({ date, title, content }: NoteType) => {
+export const NoteComplete = ({
+  date,
+  title,
+  content,
+}: NoteCompleteProps): JSX.Element => {
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.date}>{date}</Text>

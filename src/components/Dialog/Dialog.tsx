@@ -15,13 +15,14 @@ import { Checkbox } from "../Checkbox/Checkbox";
 import { handleChangeFilter } from "../../slices/notes/notesSlice";
 import { theme } from "../../theme/theme";
 
-export const Dialog = () => {
+export const Dialog = (): JSX.Element => {
   const { filters } = useSelector((state: RootState) => state.notes);
   const { modal } = useSelector((state: RootState) => state.ui);
   const dispatch = useDispatch();
 
-  const handleCheckbox = (name: string) => {
-    return dispatch(handleChangeFilter({ name }));
+  const handleCheckbox = (name: string): void => {
+    dispatch(handleChangeFilter({ name }));
+    return;
   };
 
   return (

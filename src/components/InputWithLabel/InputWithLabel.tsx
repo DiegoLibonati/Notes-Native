@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
-import { InputWithLabelType } from "../../types/types";
+import { InputWithLabelProps } from "../../types/types";
 import { theme } from "../../theme/theme";
 
 export const InputWithLabel = ({
@@ -10,7 +10,7 @@ export const InputWithLabel = ({
   value,
   placeholderTextColor,
   onChangeText,
-}: InputWithLabelType) => {
+}: InputWithLabelProps): JSX.Element => {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>

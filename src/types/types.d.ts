@@ -1,30 +1,37 @@
-export type NoteType = {
+import { store } from "../slices/store";
+
+// Types
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
+export type UiState = {
+  modal: {
+    isOpen: boolean;
+  };
+};
+
+export type NotesState = {
+  notes: Note[];
+  notesFiltered: Note[];
+  isFiltering: boolean;
+  filters: NoteFilter[];
+};
+
+export type Note = {
   id: number | string;
   date: string;
   title: string;
   content: string;
 };
 
-export type NavBarType = {
-  goBack?: boolean;
-  filter?: boolean;
-};
-
-export type CheckboxType = {
-  name: string;
-  active: boolean;
-  onPress: (name: string) => void;
-};
-
-export type NotesStateType = {
-  notes: NoteType[];
-  notesFiltered: NoteType[];
-  isFiltering: boolean;
-  filters: {
-    id: string;
+export type NotesPayload = {
+  isFiltering: {
+    valueFilter: string;
+  };
+  changeActiveFilter: {
     name: string;
-    isActive: boolean;
-  }[];
+  };
+  note: Note;
 };
 
 export type NoteFilter = {
@@ -33,32 +40,37 @@ export type NoteFilter = {
   isActive: boolean;
 };
 
-export type UiStateType = {
-  modal: {
-    isOpen: boolean;
-  };
-};
+// Interfaces
 
-export type NotesPayloadType = {
-  isFiltering: {
-    valueFilter: string;
-  };
-  changeActiveFilter: {
-    name: string;
-  };
-  note: NoteType;
-};
+export interface NavBarProps {
+  goBack?: boolean;
+  filter?: boolean;
+}
 
-export type InputWithLabelType = {
+export interface NoteProps {
+  id: number | string;
+  date: string;
+  title: string;
+  content: string;
+}
+
+export interface CheckboxProps {
+  name: string;
+  active: boolean;
+  onPress: (name: string) => void;
+}
+
+export interface NoteCompleteProps {
+  date: string;
+  title: string;
+  content: string;
+}
+
+export type InputWithLabelProps = {
   label: string;
   placeholder: string;
-  inputHeight?: number | string;
+  inputHeight?: DimensionValue;
   value: string;
   placeholderTextColor?: string;
   onChangeText: (text: string) => void;
 };
-
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch;

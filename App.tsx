@@ -4,15 +4,13 @@ import { NotesRouter } from "./src/router/NotesRouter";
 import { Provider } from "react-redux";
 import { store } from "./src/slices/store";
 
-export default function App() {
+export default function App(): JSX.Element {
   return (
-    <>
-      <Provider store={store}>
-        <StatusBar style="light" />
-        <NativeRouter>
-          <NotesRouter></NotesRouter>
-        </NativeRouter>
-      </Provider>
-    </>
+    <Provider store={store}>
+      <StatusBar style="light" />
+      <NativeRouter>
+        <NotesRouter></NotesRouter>
+      </NativeRouter>
+    </Provider>
   );
 }

@@ -2,12 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import {
   NoteFilter,
-  NotesPayloadType,
-  NotesStateType,
+  NotesPayload,
+  NotesState,
 } from "../../types/types";
 
 // Define the initial state using that type
-const initialState: NotesStateType = {
+const initialState: NotesState = {
   notes: [],
   notesFiltered: [],
   isFiltering: false,
@@ -29,7 +29,7 @@ export const notesSlice = createSlice({
   reducers: {
     handleFilter: (
       state,
-      action: PayloadAction<NotesPayloadType["isFiltering"]>
+      action: PayloadAction<NotesPayload["isFiltering"]>
     ) => {
       const filterBy = state.filters.find((filter) => filter.isActive)?.name;
       let newNotes = null;
@@ -64,7 +64,7 @@ export const notesSlice = createSlice({
     },
     handleIsFiltering: (
       state,
-      action: PayloadAction<NotesPayloadType["isFiltering"]>
+      action: PayloadAction<NotesPayload["isFiltering"]>
     ) => {
       if (action.payload.valueFilter && !state.isFiltering) {
         state.isFiltering = true;
@@ -78,7 +78,7 @@ export const notesSlice = createSlice({
     },
     handleChangeFilter: (
       state,
-      action: PayloadAction<NotesPayloadType["changeActiveFilter"]>
+      action: PayloadAction<NotesPayload["changeActiveFilter"]>
     ) => {
       state.filters.reduce((filters: NoteFilter[], filter: NoteFilter) => {
         if (filter.name === action.payload.name) {
@@ -92,13 +92,13 @@ export const notesSlice = createSlice({
         return filters;
       }, []);
     },
-    handleNewNote: (state, action: PayloadAction<NotesPayloadType["note"]>) => {
+    handleNewNote: (state, action: PayloadAction<NotesPayload["note"]>) => {
       state.notes.push(action.payload);
       return;
     },
     handleRemoveNote: (
       state,
-      action: PayloadAction<NotesPayloadType["note"]>
+      action: PayloadAction<NotesPayload["note"]>
     ) => {
       state.notes = state.notes.filter((note) => note.id !== action.payload.id);
       return;

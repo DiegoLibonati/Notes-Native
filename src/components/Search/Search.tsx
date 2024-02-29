@@ -4,10 +4,10 @@ import { handleFilter, handleIsFiltering } from "../../slices/notes/notesSlice";
 import { useDispatch } from "react-redux";
 import { theme } from "../../theme/theme";
 
-export const Search = () => {
+export const Search = (): JSX.Element => {
   const dispatch = useDispatch();
 
-  const [valueFilter, setValueFilter] = useState("");
+  const [valueFilter, setValueFilter] = useState<string>("");
 
   useEffect(() => {
     dispatch(handleFilter({ valueFilter }));

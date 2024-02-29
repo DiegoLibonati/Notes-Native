@@ -1,12 +1,12 @@
 import { StyleSheet, Text, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigate } from "react-router-native";
-import { NavBarType } from "../../types/types";
+import { NavBarProps } from "../../types/types";
 import { useDispatch } from "react-redux";
 import { handleOpenModal } from "../../slices/ui/uiSlice";
 import { theme } from "../../theme/theme";
 
-export const NavBar = ({ goBack = false, filter = false }: NavBarType) => {
+export const NavBar = ({ goBack = false, filter = false }: NavBarProps): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

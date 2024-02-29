@@ -7,9 +7,10 @@ import { useDispatch } from "react-redux";
 import { handleNewNote } from "../../slices/notes/notesSlice";
 import { useNavigate } from "react-router-native";
 import { theme } from "../../theme/theme";
+import { Note } from "../../types/types";
 
-export const CreateNotePage = () => {
-  const [formData, setFormData] = useState({
+export const CreateNotePage = (): JSX.Element => {
+  const [formData, setFormData] = useState<Pick<Note, "title" | "content">>({
     title: "",
     content: "",
   });
@@ -17,7 +18,7 @@ export const CreateNotePage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     const note = {
       id: Number(new Date().getMilliseconds()),
       date: new Date().toLocaleString("default", {

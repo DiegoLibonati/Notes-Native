@@ -5,25 +5,32 @@ import { getNoteById } from "../../helpers/getNoteById";
 import { NavBar } from "../../components/NavBar/NavBar";
 import { NoteComplete } from "../../components/NoteComplete/NoteComplete";
 import { useSelector } from "react-redux";
-import { RootState } from "../../types/types";
+import { Note, RootState } from "../../types/types";
 import { theme } from "../../theme/theme";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useDispatch } from "react-redux";
 import { handleRemoveNote } from "../../slices/notes/notesSlice";
+import { useState, useEffect } from "react";
 
-export const NotePage = () => {
+export const NotePage = (): JSX.Element => {
+  const [note, setNote] = useState<Note | null>(null);
+
   const { notes } = useSelector((state: RootState) => state.notes);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { idNote } = useParams();
 
-  const note = getNoteById(notes, idNote!);
+  useEffect(() => {
+    if (idNote) {
+      setNote(getNoteById(notes, idNote!));
+    }
+  }, [idNote]);
 
   return (
     <View style={styles.container}>
       <NavBar goBack={true}></NavBar>
 
-      <NoteComplete {...note}></NoteComplete>
+      <NoteComplete {...note!}></NoteComplete>
 
       <Ionicons
         name="close"
@@ -31,7 +38,7 @@ export const NotePage = () => {
         style={styles.remove}
         color={theme.colors.white}
         onPress={() => {
-          dispatch(handleRemoveNote(note));
+          dispatch(handleRemoveNote(note!));
           navigate("/");
         }}
       />

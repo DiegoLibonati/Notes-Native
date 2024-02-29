@@ -1,9 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { NotesPayloadType, UiStateType } from "../../types/types";
+import { UiState } from "../../types/types";
 
 // Define the initial state using that type
-const initialState: UiStateType = {
+const initialState: UiState = {
   modal: {
     isOpen: false,
   },

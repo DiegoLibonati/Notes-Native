@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Pressable, Text, StyleSheet } from "react-native";
-import { CheckboxType } from "../../types/types";
+import { CheckboxProps } from "../../types/types";
 import { theme } from "../../theme/theme";
 
-export const Checkbox = ({ name, active, onPress }: CheckboxType) => {
+export const Checkbox = ({ name, active, onPress }: CheckboxProps): JSX.Element => {
   return (
     <View style={styles.checkboxContainer}>
       <Pressable
