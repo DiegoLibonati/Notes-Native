@@ -1,4 +1,4 @@
-# Notes-Native-App
+# Notes Native
 
 ## Getting Started
 
@@ -26,7 +26,7 @@ This native application is a notepad. It allows you to add notes, view these not
 
 ## Portfolio Link
 
-[`https://www.diegolibonati.com.ar/#/project/14`](https://www.diegolibonati.com.ar/#/project/14)
+[`https://www.diegolibonati.com.ar/#/project/Notes-Native`](https://www.diegolibonati.com.ar/#/project/Notes-Native)
 
 ## Video
 
