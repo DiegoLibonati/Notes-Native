@@ -48,10 +48,12 @@ These are the runtime and development packages declared in `package.json`:
 "expo-asset": "~12.0.9"
 "expo-font": "~14.0.9"
 "react": "19.1.0"
+"react-dom": "19.1.0"
 "react-native": "0.81.5"
 "react-native-safe-area-context": "~5.6.0"
 "react-native-screens": "~4.16.0"
 "react-redux": "^9.2.0"
+"react-native-web": "^0.21.0"
 ```
 
 #### devDependencies
@@ -82,6 +84,12 @@ These are the runtime and development packages declared in `package.json`:
 
 ## Getting Started
 
+### Requirements
+
+- **Node.js 22+** — the version is pinned via `.nvmrc` and enforced through `engines` in `package.json` together with `engine-strict=true` in `.npmrc`. If you use `nvm`, run `nvm use` from the project root to switch to the right version automatically.
+
+### Run the app locally
+
 With the stack in place, follow these steps to run the app locally:
 
 1. Clone the repository
@@ -102,6 +110,71 @@ For coverage report:
 
 ```bash
 npm run test:coverage
+```
+
+## Continuous Integration
+
+The repository ships with a **GitHub Actions** pipeline defined in [`.github/workflows/ci.yml`](.github/workflows/ci.yml). It runs automatically on every `push` and `pull_request` targeting the `main` branch. All jobs run sequentially, so a failure in an earlier stage short-circuits the rest of the pipeline.
+
+### Pipeline overview
+
+```
+                ┌─── PR or push to main ───┐
+                ▼                          ▼
+┌──────────────────────┐  ┌──────────────────────┐
+│    lint-and-audit    │─▶│        testing       │
+│ eslint · tsc · prettier│  │ jest (jest-expo)     │
+└──────────────────────┘  └──────────────────────┘
+                                      │
+                                      ▼
+                          ┌──────────────────────┐
+                          │        bundle        │
+                          │ expo export (all)    │
+                          │ upload expo-dist     │
+                          └──────────────────────┘
+                                      │
+                                      ▼
+                          ┌──────────────────────┐
+                          │     expo-doctor      │
+                          │ npm run doctor       │
+                          └──────────────────────┘
+```
+
+### Validation jobs (run on every PR and push)
+
+1. **`lint-and-audit`** — runs `npm ci`, then `npm run lint` (ESLint over `src`, `app` and `__tests__`), `npm run typecheck` (`tsc --noEmit` against `tsconfig.app.json`) and `npm run format:check` (Prettier in check mode).
+2. **`testing`** — runs the full Jest suite via `npm run test` using the `jest-expo` preset together with `@testing-library/react-native`.
+3. **`bundle`** — runs `npx expo export --platform all` to produce a static bundle for iOS, Android and web, and uploads the resulting `dist/` folder as a workflow artifact named `expo-dist` (retained for 7 days, errors out if empty).
+4. **`expo-doctor`** — runs `npm run doctor` (`npx expo-doctor`) as a final health check on dependency versions, SDK compatibility and project configuration.
+
+All jobs check out the repository, set up Node via `actions/setup-node@v4` reading the version from `.nvmrc`, and reuse the npm cache. To bump the Node runtime used in CI, just update `.nvmrc` — every job picks the new version automatically.
+
+### Where the build outputs live
+
+| Output                                                   | Location                                                      |
+| -------------------------------------------------------- | ------------------------------------------------------------- |
+| Validation logs (lint, typecheck, format, tests, doctor) | **Actions** tab on GitHub                                     |
+| Web/native static bundle (`dist/`)                       | **Actions → run → Artifacts → `expo-dist`** (7-day retention) |
+| Production builds (`.apk` / `.aab` / `.ipa`)             | Built outside CI via **EAS Build**, not GitHub Actions        |
+
+> **Note:** This pipeline only produces a smoke-test bundle to guarantee the project compiles. Store-ready binaries for Android and iOS are produced by [EAS Build](https://docs.expo.dev/build/introduction/), which uses the `google-service-account.json` file ignored by `.gitignore`.
+
+### Running the same checks locally
+
+```bash
+# lint-and-audit
+npm run lint
+npm run typecheck
+npm run format:check
+
+# testing
+npm run test
+
+# bundle
+npx expo export --platform all
+
+# expo-doctor
+npm run doctor
 ```
 
 ## Security Audit
