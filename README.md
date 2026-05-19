@@ -201,11 +201,11 @@ npm run doctor
 
 The following issues surface when running the audits above and are documented here so they don't block development.
 
-### npm audit reports 18 vulnerabilities (4 low, 14 moderate)
+### npm audit reports 9 vulnerabilities (5 low, 4 moderate)
 
-Running `npm audit` reports vulnerabilities in `@tootallnate/once`, `postcss`, and `uuid`. All of them are transitive dependencies of Expo's internal toolchain — specifically `jest-expo`, `@expo/cli`, `@expo/metro-config`, and `@expo/config-plugins`. None of these packages are included in the app bundle delivered to end users; they run exclusively on the developer's machine during build and test.
+Running `npm audit` reports vulnerabilities in `@tootallnate/once` and `postcss`. All of them are transitive dependencies of Expo's internal toolchain — specifically `jest-expo` (via `jest-environment-jsdom` → `jsdom` → `http-proxy-agent` → `@tootallnate/once`) and `expo` (via `@expo/cli` → `@expo/metro-config` → `postcss`). None of these packages are included in the app bundle delivered to end users; they run exclusively on the developer's machine during build and test.
 
-The suggested fix (`npm audit fix --force`) would downgrade `expo` to v49 and `jest-expo` to v47, both of which are incompatible with the current SDK. Do not run it.
+The suggested fix (`npm audit fix --force`) would downgrade `jest-expo` to v47.0.1 and `expo` to v55.0.25, both flagged as breaking changes and incompatible with the current SDK setup. Do not run it.
 
 This is a known limitation of the Expo ecosystem tracked upstream. The vulnerabilities will be resolved when Expo updates its internal dependencies. No action is required on the project side.
 
