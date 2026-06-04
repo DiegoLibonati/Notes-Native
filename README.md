@@ -132,12 +132,6 @@ The repository ships with a **GitHub Actions** pipeline defined in [`.github/wor
                           │ expo export (all)    │
                           │ upload expo-dist     │
                           └──────────────────────┘
-                                      │
-                                      ▼
-                          ┌──────────────────────┐
-                          │     expo-doctor      │
-                          │ npm run doctor       │
-                          └──────────────────────┘
 ```
 
 ### Validation jobs (run on every PR and push)
@@ -145,17 +139,16 @@ The repository ships with a **GitHub Actions** pipeline defined in [`.github/wor
 1. **`lint-and-audit`** — runs `npm ci`, then `npm run lint` (ESLint over `src`, `app` and `__tests__`), `npm run typecheck` (`tsc --noEmit` against `tsconfig.app.json`) and `npm run format:check` (Prettier in check mode).
 2. **`testing`** — runs the full Jest suite via `npm run test` using the `jest-expo` preset together with `@testing-library/react-native`.
 3. **`bundle`** — runs `npx expo export --platform all` to produce a static bundle for iOS, Android and web, and uploads the resulting `dist/` folder as a workflow artifact named `expo-dist` (retained for 7 days, errors out if empty).
-4. **`expo-doctor`** — runs `npm run doctor` (`npx expo-doctor`) as a final health check on dependency versions, SDK compatibility and project configuration.
 
 All jobs check out the repository, set up Node via `actions/setup-node@v4` reading the version from `.nvmrc`, and reuse the npm cache. To bump the Node runtime used in CI, just update `.nvmrc` — every job picks the new version automatically.
 
 ### Where the build outputs live
 
-| Output                                                   | Location                                                      |
-| -------------------------------------------------------- | ------------------------------------------------------------- |
-| Validation logs (lint, typecheck, format, tests, doctor) | **Actions** tab on GitHub                                     |
-| Web/native static bundle (`dist/`)                       | **Actions → run → Artifacts → `expo-dist`** (7-day retention) |
-| Production builds (`.apk` / `.aab` / `.ipa`)             | Built outside CI via **EAS Build**, not GitHub Actions        |
+| Output                                           | Location                                                      |
+| ------------------------------------------------ | ------------------------------------------------------------- |
+| Validation logs (lint, typecheck, format, tests) | **Actions** tab on GitHub                                     |
+| Web/native static bundle (`dist/`)               | **Actions → run → Artifacts → `expo-dist`** (7-day retention) |
+| Production builds (`.apk` / `.aab` / `.ipa`)     | Built outside CI via **EAS Build**, not GitHub Actions        |
 
 > **Note:** This pipeline only produces a smoke-test bundle to guarantee the project compiles. Store-ready binaries for Android and iOS are produced by [EAS Build](https://docs.expo.dev/build/introduction/), which uses the `google-service-account.json` file ignored by `.gitignore`.
 
@@ -172,9 +165,6 @@ npm run test
 
 # bundle
 npx expo export --platform all
-
-# expo-doctor
-npm run doctor
 ```
 
 ## Security Audit
